@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity >0.4.23 <0.7.0;
 
 import "./TimeLockedWallet.sol";
 
@@ -34,7 +34,7 @@ contract TimeLockedWalletFactory {
         wallet.transfer(msg.value);
 
         // Emit event.
-        Created(wallet, msg.sender, _owner, now, _unlockDate, msg.value);
+        emit Created(wallet, msg.sender, _owner, now, _unlockDate, msg.value);
     }
 
     // Prevents accidental sending of ether to the factory

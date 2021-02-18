@@ -1,8 +1,8 @@
 const TimeLockedWallet = artifacts.require("./TimeLockedWallet.sol");
 const ToptalToken = artifacts.require("./ToptalToken.sol");
 
-let ethToSend = web3.toWei(1, "ether");
-let someGas = web3.toWei(0.01, "ether");
+let ethToSend = web3.utils.toWei("1", "ether");
+let someGas = web3.utils.toWei("0.01", "ether");
 let creator;
 let owner;
 
@@ -124,7 +124,7 @@ contract('TimeLockedWallet', (accounts) => {
         assert(info[1] == owner);
         assert(info[2].toNumber() == unlockDate);
         assert(info[3].toNumber() == now);
-        assert(info[4].toNumber() == ethToSend);
+        assert(info[4].toString() == ethToSend.toString());
     });
 
 });
